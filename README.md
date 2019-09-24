@@ -4,6 +4,11 @@ Sistema de Login em PHP e Javascript
 ---
 
 # aula02 24/09/2019
+layout boostrap para os formulários
+- formulario de login
+- formulario de recuperação de senha
+- formulário de  cadastro e novos usuários
+
 
 # aula01 23/09/2019
 
