@@ -31,20 +31,52 @@
         </section>
         <!-- Formulário de Login -->
         <section class="row">
-        <div class="col-lg-4 offset-lg-4 bg-light rounded" id="caixaLogin">
-        <h2 class="text-center mt-2">
-            Entrar no Sistema 
-        </h2>
-            <form action="#" method="post" class="p-2"
-            id="formLogin">
-                <div class="form-group">
-                    <input type="text" name="" id="">
+            <div class="col-lg-4 offset-lg-4 bg-light rounded" id="caixaLogin">
+                <h2 class="text-center mt-2">
+                    Entrar no Sistema
+                </h2>
+                <form action="#" method="post" class="p-2" id="formLogin">
+                    <div class="form-group">
+                        <input type="text" name="nomeUsuario" id="nomeUsuario" placeholder="Nome de Usuário" class="form-control">
 
-                </div>
-        
-            </form>
-        </div>
-        
+                    </div>
+
+                    <div class="form-group">
+                      <input type="password" name="senhaUsuario" id="senhaUsuario" placeholder="Senha" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                    <div class="custom-control custom-checkbox">
+                            <input libxml_disable_entity_loader
+                            id="lembrar" class="custom-control-input">
+
+                            <label for="lembrar" class="custom-control-label"> 
+                            Lembrar de mim.
+                            </label>
+
+                            <a href="#" class="float-right">
+                            Esqueci a senha!
+                            </a> 
+
+                    </div>
+
+                    </div>
+
+                    <div class="form-group>"
+                        <input type="submit" value="::Entrar::" name="btnEntrar" id="btnEntrar" class="btn btn-primary btn-block">
+                    
+                    </div class="form-group">  
+                        <p class="text-center">Novo usuário? <a href="#" id="btnRegistrar">
+                        Registre-se aqui!
+                        <a/>
+                    </P>
+                    <div>
+                    
+                    </div>
+
+                </form>
+            </div>
+
         </section>
     </main>
     <!-- Optional JavaScript -->
