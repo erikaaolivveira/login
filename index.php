@@ -248,7 +248,7 @@
                 $("#caixaRegistro").hide(); //Ocultar
             });
         });
- 
+
         /*
          * Translated default messages for the jQuery validation plugin.
          * Locale: PT_BR
