@@ -246,7 +246,7 @@
             $("#btnJaRegistrado2").click(function() {
                 $("#caixaLogin").show(); //Mostrar
                 $("#caixaRegistro").hide(); //Ocultar
-            });
+            }); 
         });
 
         /*
