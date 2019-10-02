@@ -272,7 +272,7 @@
             max: jQuery.validator.format("Por favor, forne&ccedil;a um valor menor ou igual a {0}."),
             min: jQuery.validator.format("Por favor, forne&ccedil;a um valor maior ou igual a {0}.")
         });
-    </script>
+    </script> 
 
 
 </body>
