@@ -1,4 +1,3 @@
-<?php
 # Back-end
 
 echo "\n<pre>\n";
