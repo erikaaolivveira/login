@@ -1,4 +1,14 @@
 <?php
+//Conexão com o banco de dados
+require_once 'configDB.php';
+
+function verificar_entrada($entrada){
+    //Filtrando a entrada
+    $saida = htmlspecialchars($entrada);
+    $saida = stripslashes($saida);
+    $saida = trim($saida);
+    return $saida;//retorna a saida limpa
+}
 
 print_r($_POST);
 die(); //Morre
