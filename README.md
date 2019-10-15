@@ -3,8 +3,15 @@ Sistema de Login em PHP e Javascript
 
 ---
 
-# aula05 04/10/2019
 
+# aula06 15/10/2019
+Persistencia de dados no banco de dados
+
+
+
+# aula05 04/10/2019
+Envio de dados do Front-end para o Back-end, 
+métodos GET e POST
 
 
 
@@ -13,13 +20,11 @@ Sistema de Login em PHP e Javascript
 - Validação dos campos com jQuery
 
 
-
 # aula03 30/09/2019
 - Formulário de cadastro de novos usuários
 - Validação dos campos com jQuery validate
 - ~Ocultar e mostrar os formulários com jQuery.
   jQuery é uma biblioteca de funções javascript.                                                                                                                                                            
-
 # aula02 24/09/2019
 layout boostrap para os formulários
 - formulario de login
@@ -64,3 +69,10 @@ Pressione Enter
 ## Editar utilizando o VS Code
 - Tecla Windows - Abrir o Visual Studio Code (azul)
 - *Abrir pasta* no Vs Code a pasta c:\xampp\htdocs\login
+
+# Importar o banco de dados 
+- Acessar no navegador http://localhost/phpmyadmin
+- Clicar em importar
+- Selecionar o arquivo, clicando em Browse ou escolha o arquivo
+- Abra o arquivo 127.0.0.1.sql e clique em executar
+- O banco de dados deve ser importado corretamente 
