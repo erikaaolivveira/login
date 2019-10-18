@@ -70,7 +70,7 @@ if (isset($_POST['action'])){
     }else if($_POST['action'] = 'login'){
         //Senão, teste se a ação é recuperar senha
         echo "\n<p>cadastro</p>";
-        echo "\n<pre>";
+        echo "\n<pre>":
         print_r($_POST);
         echo "\n</pre>";
 
