@@ -1,5 +1,5 @@
 # login
-Sistema de Login em PHP e Javascript 
+- Sistema de Login em PHP e Javascript 
 
 ---
 
@@ -8,13 +8,13 @@ Sistema de Login em PHP e Javascript
 
 
 # aula06 15/10/2019
-Persistencia de dados no banco de dados
+- Persistencia de dados no banco de dados
 
 
 
 # aula05 04/10/2019
-Envio de dados do Front-end para o Back-end, 
-métodos GET e POST
+- Envio de dados do Front-end para o Back-end, 
+- métodos GET e POST
 
 
 
