@@ -3,6 +3,11 @@
 
 ---
 
+# aula09 22/10/2019
+- Altenticação do usuário completa
+- Permissão de navegação atraves da SESSAO
+- Lmebra senha e usuario com COOKIES
+
 # aula08 21/10/2019
 - Autenticação do usuário e permissão de acaso ao perfil php
 
