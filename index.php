@@ -46,17 +46,23 @@
                 </h2>
                 <form action="#" method="post" class="p-2" id="formLogin">
                     <div class="form-group">
-                        <input type="text" name="nomeDoUsuario" id="nomeUsuario" placeholder="Nome de Usuário" class="form-control" required minlengh t="6">
+                        <input type="text" name="nomeDoUsuario" id="nomeUsuario" placeholder="Nome de Usuário" class="form-control" required minlenght="6" value="<?= isset($_COOKIE['nomeDoUsuario']) ? $_COOKIE['nomeDoUsuario'] : "";
+                                                                                                                                                                    ?>">
 
                     </div>
 
                     <div class="form-group">
-                        <input type="password" name="senhaDoUsuario" id="senhaUsuario" placeholder="Senha" class="form-control">
+                        <input type="password" name="senhaDoUsuario" id="senhaUsuario" 
+                        placeholder="Senha" class="form-control" 
+                        value="<?= isset($_COOKIE['senhaDoUsuario']) ? $_COOKIE['senhaDoUsuario'] : "";?>">
                     </div>
 
                     <div class="form-group mt-5">
                         <div class="custom-control custom-checkbox">
-                            <input libxml_disable_entity_loader id="lembrar" class="custom-control-input">
+
+                            <input type="checkbox" id="lembrar" name="lembrar" 
+                            class="custom-control-input" 
+                            <?= isset($_COOKIE['senhaDoUsuario']) ? " checked" : "" ?>>
 
                             <label for="lembrar" class="custom-control-label">
                                 Lembrar de mim.
@@ -208,137 +214,137 @@
         //Código jQuery para mostrar e ocultar os formulários
         $(function() {
 
-                    //Validação de Formulários
+            //Validação de Formulários
 
-                    jQuery.validator.setDefaults({
+            jQuery.validator.setDefaults({
 
-                        success: "valid"
-                    });
-                    $("#formRegistro").validate({
-                        rules: {
-                            senhaDoUsuario: "required",
-                            senhaUsuarioConfirmar: {
-                                equalTo: "#senhaDoUsuario"
-                            }
+                success: "valid"
+            });
+            $("#formRegistro").validate({
+                rules: {
+                    senhaDoUsuario: "required",
+                    senhaUsuarioConfirmar: {
+                        equalTo: "#senhaDoUsuario"
+                    }
+                }
+            });
+
+            $("#formLogin").validate();
+
+            $("#formSenha").validate();
+
+            $("#btnEsqueci").click(function() {
+                $("#caixaLogin").hide(); //Ocultar
+                $("#caixaSenha").show(); //Mostrar
+            });
+
+            $("#btnJaRegistrado").click(function() {
+                $("#caixaSenha").hide(); //Ocultar gerar nova senha
+                $("#caixaLogin").show(); //Mostrar caixa login
+            });
+
+
+            $("#btnRegistrarNovo").click(function() {
+                $("#caixaLogin").hide(); //Ocultar
+                $("#caixaRegistro").show();
+            });
+
+            $("#btnJaRegistrado2").click(function() {
+                $("#caixaLogin").show(); //Mostrar
+                $("#caixaRegistro").hide(); //Ocultar
+            });
+            //Cadastro de novo usuário 
+            $("#btnRegistrar").click(function(e) {
+                if (document
+                    .querySelector("#formRegistro")
+                    .checkValidity()) {
+                    e.preventDefault(); //Não abrir outra página
+                    //Envio dos dados via Ajax
+                    $.ajax({
+                        url: 'recebe_dados.php',
+                        method: 'post',
+                        data: $("#formRegistro").serialize() + '&action=cadastro',
+                        success: function(resposta) {
+                            $("#alerta").show();
+                            $(".resultado").html(resposta);
                         }
                     });
-
-                    $("#formLogin").validate();
-
-                    $("#formSenha").validate();
-
-                    $("#btnEsqueci").click(function() {
-                        $("#caixaLogin").hide(); //Ocultar
-                        $("#caixaSenha").show(); //Mostrar
-                    });
-
-                    $("#btnJaRegistrado").click(function() {
-                        $("#caixaSenha").hide(); //Ocultar gerar nova senha
-                        $("#caixaLogin").show(); //Mostrar caixa login
-                    });
-
-
-                    $("#btnRegistrarNovo").click(function() {
-                        $("#caixaLogin").hide(); //Ocultar
-                        $("#caixaRegistro").show();
-                    });
-
-                    $("#btnJaRegistrado2").click(function() {
-                        $("#caixaLogin").show(); //Mostrar
-                        $("#caixaRegistro").hide(); //Ocultar
-                    });
-                    //Cadastro de novo usuário 
-                    $("#btnRegistrar").click(function(e) {
-                        if (document
-                            .querySelector("#formRegistro")
-                            .checkValidity()) {
-                            e.preventDefault(); //Não abrir outra página
-                            //Envio dos dados via Ajax
-                            $.ajax({
-                                url: 'recebe_dados.php',
-                                method: 'post',
-                                data: $("#formRegistro").serialize() + '&action=cadastro',
-                                success: function(resposta) {
-                                    $("#alerta").show();
-                                    $(".resultado").html(resposta);
-                                }
-                            });
-                        }
-                        return true;
-                    });
-                    //Login 
-                    $("#btnEntrar").click(function(e) {
-                            if (document
-                                .querySelector("#formLogin")
-                                .checkValidity()) {
-                                e.preventDefault(); //Não abrir outra página
-                                //Envio dos dados via Ajax
-                                $.ajax({
-                                        url: 'recebe_dados.php',
-                                        method: 'post',
-                                        data: $("#formLogin").serialize() + '&action=login',
-                                        success: function(resposta) {
-                                            $("#alerta").show();
-                                            //$(".resultado").html (resposta);
-                                            if (resposta == "ok") {
-                                                window.location = "perfil.php";
-                                            } else {
-                                                $(".resultado").html (resposta);
-                                                }
-
-                                            }
-                                        });
-                                }
-                                return true;
-
-                            });
-                        //Recuperação de senha
-                        $("#btnGerar").click(function(e) {
-                            if (document
-                                .querySelector("#formSenha")
-                                .checkValidity()) {
-                                e.preventDefault(); //Não abrir outra página
-                                //Envio dos dados via Ajax
-                                $.ajax({
-                                    url: 'recebe_dados.php',
-                                    method: 'post',
-                                    data: $("#formRegistro").serialize() + '&action=senha',
-                                    success: function(resposta) {
-                                        $("#alerta").show();
-                                        $(".resultado").html(resposta);
-                                    }
-                                });
+                }
+                return true;
+            });
+            //Login 
+            $("#btnEntrar").click(function(e) {
+                if (document
+                    .querySelector("#formLogin")
+                    .checkValidity()) {
+                    e.preventDefault(); //Não abrir outra página
+                    //Envio dos dados via Ajax
+                    $.ajax({
+                        url: 'recebe_dados.php',
+                        method: 'post',
+                        data: $("#formLogin").serialize() + '&action=login',
+                        success: function(resposta) {
+                            $("#alerta").show();
+                            //$(".resultado").html (resposta);
+                            if (resposta == "ok") {
+                                window.location = "perfil.php";
+                            } else {
+                                $(".resultado").html(resposta);
                             }
-                            return true;
 
-
-                        });
-
+                        }
                     });
+                }
+                return true;
 
-                /*
-                 * Translated default messages for the jQuery validation plugin.
-                 * Locale: PT_BR
-                 */
-                jQuery.extend(jQuery.validator.messages, {
-                    required: "Este campo &eacute; requerido.",
-                    remote: "Por favor, corrija este campo.",
-                    email: "Por favor, forne&ccedil;a um endere&ccedil;o eletr&ocirc;nico v&aacute;lido.",
-                    url: "Por favor, forne&ccedil;a uma URL v&aacute;lida.",
-                    date: "Por favor, forne&ccedil;a uma data v&aacute;lida.",
-                    dateISO: "Por favor, forne&ccedil;a uma data v&aacute;lida (ISO).",
-                    number: "Por favor, forne&ccedil;a um n&uacute;mero v&aacute;lido.",
-                    digits: "Por favor, forne&ccedil;a somente d&iacute;gitos.",
-                    creditcard: "Por favor, forne&ccedil;a um cart&atilde;o de cr&eacute;dito v&aacute;lido.",
-                    equalTo: "Por favor, forne&ccedil;a o mesmo valor novamente.",
-                    accept: "Por favor, forne&ccedil;a um valor com uma extens&atilde;o v&aacute;lida.",
-                    maxlength: jQuery.validator.format("Por favor, forne&ccedil;a n&atilde;o mais que {0} caracteres."),
-                    minlength: jQuery.validator.format("Por favor, forne&ccedil;a ao menos {0} caracteres."),
-                    rangelength: jQuery.validator.format("Por favor, forne&ccedil;a um valor entre {0} e {1} caracteres de comprimento."),
-                    range: jQuery.validator.format("Por favor, forne&ccedil;a um valor entre {0} e {1}."),
-                    max: jQuery.validator.format("Por favor, forne&ccedil;a um valor menor ou igual a {0}."),
-                    min: jQuery.validator.format("Por favor, forne&ccedil;a um valor maior ou igual a {0}.")
-                });
+            });
+            //Recuperação de senha
+            $("#btnGerar").click(function(e) {
+                if (document
+                    .querySelector("#formSenha")
+                    .checkValidity()) {
+                    e.preventDefault(); //Não abrir outra página
+                    //Envio dos dados via Ajax
+                    $.ajax({
+                        url: 'recebe_dados.php',
+                        method: 'post',
+                        data: $("#formRegistro").serialize() + '&action=senha',
+                        success: function(resposta) {
+                            $("#alerta").show();
+                            $(".resultado").html(resposta);
+                        }
+                    });
+                }
+                return true;
+
+
+            });
+
+        });
+
+        /*
+         * Translated default messages for the jQuery validation plugin.
+         * Locale: PT_BR
+         */
+        jQuery.extend(jQuery.validator.messages, {
+            required: "Este campo &eacute; requerido.",
+            remote: "Por favor, corrija este campo.",
+            email: "Por favor, forne&ccedil;a um endere&ccedil;o eletr&ocirc;nico v&aacute;lido.",
+            url: "Por favor, forne&ccedil;a uma URL v&aacute;lida.",
+            date: "Por favor, forne&ccedil;a uma data v&aacute;lida.",
+            dateISO: "Por favor, forne&ccedil;a uma data v&aacute;lida (ISO).",
+            number: "Por favor, forne&ccedil;a um n&uacute;mero v&aacute;lido.",
+            digits: "Por favor, forne&ccedil;a somente d&iacute;gitos.",
+            creditcard: "Por favor, forne&ccedil;a um cart&atilde;o de cr&eacute;dito v&aacute;lido.",
+            equalTo: "Por favor, forne&ccedil;a o mesmo valor novamente.",
+            accept: "Por favor, forne&ccedil;a um valor com uma extens&atilde;o v&aacute;lida.",
+            maxlength: jQuery.validator.format("Por favor, forne&ccedil;a n&atilde;o mais que {0} caracteres."),
+            minlength: jQuery.validator.format("Por favor, forne&ccedil;a ao menos {0} caracteres."),
+            rangelength: jQuery.validator.format("Por favor, forne&ccedil;a um valor entre {0} e {1} caracteres de comprimento."),
+            range: jQuery.validator.format("Por favor, forne&ccedil;a um valor entre {0} e {1}."),
+            max: jQuery.validator.format("Por favor, forne&ccedil;a um valor menor ou igual a {0}."),
+            min: jQuery.validator.format("Por favor, forne&ccedil;a um valor maior ou igual a {0}.")
+        });
     </script>
 
 
