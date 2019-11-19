@@ -1,5 +1,5 @@
-<?php
-require_once "session.php";
+<?php 
+    require_once "session.php";
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -16,8 +16,8 @@ require_once "session.php";
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-deepSkyBlue bg-dark">
-        <a class="navbar-brand" href="#">NGTH VISION</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+        <a class="navbar-brand" href="#">TNX Systems</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Alterna navegação">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -44,21 +44,22 @@ require_once "session.php";
         </div>
     </nav>
 
-    <div class="jumbotron jumbotron-fluid ">
+    <div class="jumbotron jumbotron-fluid">
         <div class="container">
             <h1 class="display-4">Boas vindas</h1>
 
-            <h2 class="display-2 text-center rounded p-1" style="background-color: deepSkyBlue; ">
+            <h2 class="display-2 text-center rounded p-1" 
+            style="background-color: deepPink; color: deepSkyBlue;">
                 <?= $nomeCompleto ?>
             </h2>
             <h2 class="text-center">
-                E-mail do Usuário:
-                <a href="malito:<?= $emailUsuario ?>">
+                E-mail do Usuário: 
+                <a href="mailto:<?=$emailUsuario?>">
                     <?=$emailUsuario?>
                 </a>
             </h2>
             <h2 class="text-center">
-                Registrado em:<?=$dataCriado?>
+                Registrado em: <?= $dataCriado  ?>
             </h2>
         </div>
     </div>
