@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
     <style>
         #alerta,
-        #caixaSenha,
+        #caixaSenha, 
         #caixaRegistro {
             display: none;
 
